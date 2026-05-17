@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token  %}
+        <input type="text" name="username" placeholder="username">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+
+        <button type="submit">register</button>
+
+
+        <label>სახელი:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>ელ-ფოსტა:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>ასაკი:</label><br>
+    <input type="number" name="age" required><br><br>
+
+    <label>ფაკულტეტი:</label><br>
+    <input type="text" name="facult" required><br><br>
+
+    <label>პაროლი:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <button type="submit">რეგისტრაცია</button>
+</body>
+</html>
+

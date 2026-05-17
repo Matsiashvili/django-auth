@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'main:home' %}">Home</a>
+            <a href="{% url 'main:about' %}">About</a>
+            <a href="{% url 'main:profile' %}">Profile</a>
+            <a href="{% url 'main:change_password' %}">Change Password</a>
+            <a href="{% url 'main:logout' %}" class="nav-logout">Logout ({{ request.user.username }})</a>
+        {% else %}
+            <a href="{% url 'main:login' %}">Login</a>
+            <a href="{% url 'main:register' %}">Register</a>
+        {% endif %}
+    </nav>
+
+    <h2>Login</h2>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %}">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Preserve ?next= so user is redirected back after login -->
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="{% url 'main:register' %}">Register</a></p>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'main:home' %}">Home</a>
+            <a href="{% url 'main:profile' %}">Profile</a>
+            <a href="{% url 'main:logout' %}" class="nav-logout">Logout ({{ request.user.username }})</a>
+        {% else %}
+            <a href="{% url 'main:login' %}">Login</a>
+            <a href="{% url 'main:register' %}">Register</a>
+        {% endif %}
+    </nav>
+
+    <h2>Register</h2>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="{% if message.tags == 'error' %}color:red;{% else %}color:green;{% endif %}">
+        </ul>
+    {% endif %}
+
+    {% if form.errors %}
+        <div class="error-box">
+            <strong>Please fix the following errors:</strong>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div>
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+
+        <div>
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+        </div>
+
+        <div>
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+        </div>
+
+        <div class="password-requirements">
+            <strong>Password requirements</strong>
+            <ul>
+                <li>At least 8 characters</li>
+                <li>Cannot be entirely numeric</li>
+                <li>Cannot be too similar to your username</li>
+                <li>Cannot be a commonly used password</li>
+            </ul>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="{% url 'main:login' %}">Login</a></p>
+</body>
+</html>

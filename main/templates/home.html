@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'main:home' %}">Home</a>
+            <a href="{% url 'main:about' %}">About</a>
+            <a href="{% url 'main:profile' %}">Profile</a>
+            <a href="{% url 'main:change_password' %}">Change Password</a>
+            <a href="{% url 'main:logout' %}" class="nav-logout">Logout ({{ request.user.username }})</a>
+        {% else %}
+            <a href="{% url 'main:login' %}">Login</a>
+            <a href="{% url 'main:register' %}">Register</a>
+        {% endif %}
+    </nav>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %}">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="home-header">
+        <h1>Welcome back, {{ request.user.username }}.</h1>
+        <p>You are logged in and have access to all protected pages.</p>
+    </div>
+
+    <div class="home-grid">
+        <a href="{% url 'main:profile' %}" class="home-card">
+            <span class="home-card-icon">👤</span>
+            <h2>Profile</h2>
+            <p>View and edit your name and email address.</p>
+        </a>
+
+        <a href="{% url 'main:change_password' %}" class="home-card">
+            <span class="home-card-icon">🔑</span>
+            <h2>Change Password</h2>
+            <p>Update your account password securely.</p>
+        </a>
+
+        <a href="{% url 'main:about' %}" class="home-card">
+            <span class="home-card-icon">ℹ️</span>
+            <h2>About</h2>
+            <p>Learn more about this project.</p>
+        </a>
+    </div>
+
+    <div class="account-info">
+        <p><strong>Username</strong> {{ request.user.username }}</p>
+        <p><strong>Email</strong> {{ request.user.email|default:"—" }}</p>
+        <p><strong>Joined</strong> {{ request.user.date_joined|date:"F j, Y" }}</p>
+        {% if request.user.first_name or request.user.last_name %}
+            <p><strong>Name</strong> {{ request.user.first_name }} {{ request.user.last_name }}</p>
+        {% endif %}
+    </div>
+
+    {% if user.is_staff %}
+        <div class="staff-box">
+            <h2>Staff Area</h2>
+            <p>You have staff access. You can manage the application via the admin panel.</p>
+            <a href="/admin/">Open Admin Panel →</a>
+        </div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,536 @@
+/* ============================================================
+   Django Class — Clean B&W Modern Design
+   Drop this file into: main/static/style.css
+   Then add to your templates:
+   {% load static %}
+   <link rel="stylesheet" href="{% static 'style.css' %}">
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray-50:  #f7f7f7;
+  --gray-100: #efefef;
+  --gray-200: #e0e0e0;
+  --gray-400: #a0a0a0;
+  --gray-600: #555555;
+  --gray-800: #222222;
+
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  --radius: 6px;
+  --radius-lg: 12px;
+  --transition: 0.18s ease;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Navbar ───────────────────────────────────────────────── */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 32px;
+  height: 56px;
+  border-bottom: 1px solid var(--gray-200);
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition);
+  letter-spacing: 0.01em;
+}
+
+nav a:hover {
+  background: var(--gray-100);
+  color: var(--black);
+}
+
+/* The separator pipe character */
+nav a + a::before {
+  content: none;
+}
+
+/* ── Page Layout ──────────────────────────────────────────── */
+body > *:not(nav) {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+}
+
+/* fallback for when content isn't wrapped */
+h1, h2, form, p, ul, div {
+  max-width: 100%;
+}
+
+/* ── Typography ───────────────────────────────────────────── */
+h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: var(--black);
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  color: var(--black);
+}
+
+p {
+  color: var(--gray-600);
+  font-size: 0.9375rem;
+  margin-bottom: 16px;
+}
+
+a {
+  color: var(--black);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity var(--transition);
+}
+
+a:hover { opacity: 0.6; }
+
+/* ── Forms ────────────────────────────────────────────────── */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 28px 0;
+}
+
+/* Django renders label + input in <p> tags via as_p */
+form p {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  color: var(--black);
+}
+
+label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--gray-800);
+  letter-spacing: 0.02em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--black);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  appearance: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--black);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--gray-400);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* Help text Django adds under fields */
+form .helptext,
+form span.helptext {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  font-family: var(--font-body);
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+button,
+input[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--black);
+  border: 1px solid var(--black);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  letter-spacing: 0.01em;
+  width: fit-content;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background: var(--gray-800);
+}
+
+/* Secondary / ghost button */
+button.secondary {
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--gray-200);
+}
+
+button.secondary:hover {
+  background: var(--gray-100);
+}
+
+/* ── Messages / Alerts ────────────────────────────────────── */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+/* Django messages list */
+ul li {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  border: 1px solid var(--gray-200);
+  background: var(--gray-50);
+  color: var(--gray-800);
+}
+
+/* success messages */
+ul li[style*="green"],
+.messages-success {
+  background: #f0fdf0;
+  border-color: #bbf7bb;
+  color: #166534;
+}
+
+/* error messages */
+ul li[style*="red"],
+.messages-error,
+.errorlist li {
+  background: #fff8f8;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+/* Django form errorlist */
+.errorlist {
+  margin: 0 0 4px;
+}
+
+.errorlist li {
+  padding: 8px 12px;
+  font-size: 0.825rem;
+}
+
+/* Error div block (form.errors section) */
+div[style*="color: red"] {
+  background: #fff8f8;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 0.875rem;
+  color: #991b1b !important;
+}
+
+div[style*="color: red"] strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+div[style*="color: red"] ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+div[style*="color: red"] ul li {
+  background: none;
+  border: none;
+  padding: 2px 0;
+  color: #991b1b;
+  font-size: 0.875rem;
+}
+
+/* ── Staff Section ────────────────────────────────────────── */
+div[style*="border: 2px solid red"] {
+  border: 1px solid var(--gray-200) !important;
+  border-left: 3px solid var(--black) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 20px 24px !important;
+  margin-top: 32px !important;
+  background: var(--gray-50) !important;
+}
+
+div[style*="border: 2px solid red"] h2 {
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 10px;
+}
+
+div[style*="border: 2px solid red"] p,
+div[style*="border: 2px solid red"] li {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+}
+
+/* ── About / Home content ─────────────────────────────────── */
+.content-card {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-top: 24px;
+}
+
+/* ── Footer-style sub-links ───────────────────────────────── */
+body > p:last-child,
+form + p {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  margin-top: 8px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  nav {
+    padding: 0 16px;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  body > *:not(nav) {
+    padding: 40px 16px 32px;
+  }
+
+  h1 { font-size: 1.4rem; }
+}
+
+/* ── Navbar logout pushed right ───────────────────────────── */
+.nav-logout {
+  margin-left: auto;
+}
+
+/* ── Password requirements box ────────────────────────────── */
+.password-requirements {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-top: 4px;
+}
+
+.password-requirements strong {
+  font-size: 0.8125rem;
+  color: var(--gray-600);
+  display: block;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.password-requirements ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style: disc;
+}
+
+.password-requirements ul li {
+  background: none;
+  border: none;
+  padding: 2px 0;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+/* ── Error box ─────────────────────────────────────────────── */
+.error-box {
+  background: #fff8f8;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 0.875rem;
+  color: #991b1b;
+}
+
+.error-box strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.error-box ul {
+  padding-left: 16px;
+  list-style: disc;
+  margin: 0;
+}
+
+.error-box ul li {
+  background: none;
+  border: none;
+  padding: 2px 0;
+  color: #991b1b;
+}
+
+/* ── Home page ─────────────────────────────────────────────── */
+.home-header {
+  margin-bottom: 32px;
+}
+
+.home-header h1 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.home-header p {
+  color: var(--gray-400);
+  margin: 0;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+  max-width: 700px;
+}
+
+.home-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  color: var(--black);
+}
+
+.home-card:hover {
+  border-color: var(--black);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  opacity: 1;
+}
+
+.home-card-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.home-card h2 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.home-card p {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  margin: 0;
+}
+
+.account-info {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+
+.account-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 12px;
+  color: var(--black);
+}
+
+.account-info p strong {
+  color: var(--gray-400);
+  min-width: 80px;
+  font-weight: 500;
+}
+
+.staff-box {
+  border: 1px solid var(--gray-200);
+  border-left: 3px solid var(--black);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  max-width: 700px;
+}
+
+.staff-box h2 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-600);
+  margin-bottom: 6px;
+}
+
+.staff-box p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.staff-box a {
+  font-size: 0.9rem;
+}
