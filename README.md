@@ -1,32 +1,52 @@
-# Django Class Project
+# Django Authentication Project
 
-User authentication app — register, login, logout, change password.
+A simple Django authentication system featuring user registration, login/logout, password change, and role-based access control using Django’s built-in auth system.
 
-## Run
+## Features
+- User registration system
+- Login and logout functionality
+- Password change functionality
+- Protected views using @login_required
+- Staff-only content restriction
+- Django messages framework for feedback
+- next= redirect after login
+- Responsive navigation bar
+- Django admin panel integration
 
-```bash
-.\env\Scripts\activate    # Windows
-source env/bin/activate   # Mac/Linux
+## Tech Stack
+- Python
+- Django
+- HTML5
+- CSS3
 
+## Project Structure
+project/
+├── main/
+│   ├── templates/
+│   ├── static/
+│   ├── views.py
+│   ├── urls.py
+│   └── models.py
+├── config/
+│   ├── settings.py
+│   └── urls.py
+└── manage.py
+
+## Setup
+
+python -m venv env
+.\env\Scripts\activate
+pip install django
 python manage.py runserver
-```
 
-Open `http://127.0.0.1:8000`
+## Usage
+http://127.0.0.1:8000
 
-## Pages
+/ → Home (login required)
+/register/ → Register
+/login/ → Login
+/logout/ → Logout
+/admin/ → Admin panel
 
-| URL | Access |
-|-----|--------|
-| `/` | Home (login required) |
-| `/register/` | Register |
-| `/login/` | Login |
-| `/logout/` | Logout |
-| `/about/` | About (login required) |
-| `/change-password/` | Change password (login required) |
-| `/admin/` | Admin panel |
-
-## Create admin user
-
-```bash
-python manage.py createsuperuser
-```
+## Notes
+Uses Django built-in authentication system with protected routes and staff-only access.

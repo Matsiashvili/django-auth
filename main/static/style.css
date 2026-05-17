@@ -1,14 +1,6 @@
-/* ============================================================
-   Django Class — Clean B&W Modern Design
-   Drop this file into: main/static/style.css
-   Then add to your templates:
-   {% load static %}
-   <link rel="stylesheet" href="{% static 'style.css' %}">
-   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?familyDM+Sans:wght@300;400;500;600&familyDM+Mono:wght@400;500&displayswap');
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
-
-/* ── Reset & Base ─────────────────────────────────────────── */
+/* Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -44,7 +36,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Navbar ───────────────────────────────────────────────── */
+/*Navbar*/
 nav {
   display: flex;
   align-items: center;
@@ -79,7 +71,7 @@ nav a + a::before {
   content: none;
 }
 
-/* ── Page Layout ──────────────────────────────────────────── */
+/* Page Layout */
 body > *:not(nav) {
   max-width: 520px;
   margin: 0 auto;
@@ -91,7 +83,7 @@ h1, h2, form, p, ul, div {
   max-width: 100%;
 }
 
-/* ── Typography ───────────────────────────────────────────── */
+/*  Typography */
 h1 {
   font-size: 1.75rem;
   font-weight: 600;
@@ -125,7 +117,7 @@ a {
 
 a:hover { opacity: 0.6; }
 
-/* ── Forms ────────────────────────────────────────────────── */
+/*Forms */
 form {
   display: flex;
   flex-direction: column;
@@ -149,10 +141,10 @@ label {
   letter-spacing: 0.02em;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
+input[type= "text"],
+input[type=  "email"],
+input[type=  "password"],
+input[type=  "number"],
 textarea,
 select {
   width: 100%;
@@ -194,9 +186,9 @@ form span.helptext {
   font-family: var(--font-body);
 }
 
-/* ── Buttons ──────────────────────────────────────────────── */
+/*Buttons */
 button,
-input[type="submit"] {
+input[type= "submit"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -215,7 +207,7 @@ input[type="submit"] {
 }
 
 button:hover,
-input[type="submit"]:hover {
+input[type= "submit"]:hover {
   background: var(--gray-800);
 }
 
@@ -230,7 +222,7 @@ button.secondary:hover {
   background: var(--gray-100);
 }
 
-/* ── Messages / Alerts ────────────────────────────────────── */
+/*Messages / Alerts */
 ul {
   list-style: none;
   padding: 0;
@@ -250,7 +242,7 @@ ul li {
 }
 
 /* success messages */
-ul li[style*="green"],
+ul li[style*"green"],
 .messages-success {
   background: #f0fdf0;
   border-color: #bbf7bb;
@@ -258,7 +250,7 @@ ul li[style*="green"],
 }
 
 /* error messages */
-ul li[style*="red"],
+ul li[style*"red"],
 .messages-error,
 .errorlist li {
   background: #fff8f8;
@@ -277,7 +269,7 @@ ul li[style*="red"],
 }
 
 /* Error div block (form.errors section) */
-div[style*="color: red"] {
+div[style*"color: red"] {
   background: #fff8f8;
   border: 1px solid #fecaca;
   border-radius: var(--radius);
@@ -287,18 +279,18 @@ div[style*="color: red"] {
   color: #991b1b !important;
 }
 
-div[style*="color: red"] strong {
+div[style*"color: red"] strong {
   display: block;
   margin-bottom: 6px;
 }
 
-div[style*="color: red"] ul {
+div[style*"color: red"] ul {
   margin: 0;
   padding-left: 16px;
   list-style: disc;
 }
 
-div[style*="color: red"] ul li {
+div[style*"color: red"] ul li {
   background: none;
   border: none;
   padding: 2px 0;
@@ -306,8 +298,8 @@ div[style*="color: red"] ul li {
   font-size: 0.875rem;
 }
 
-/* ── Staff Section ────────────────────────────────────────── */
-div[style*="border: 2px solid red"] {
+/*Staff Section*/
+div[style*"border: 2px solid red"] {
   border: 1px solid var(--gray-200) !important;
   border-left: 3px solid var(--black) !important;
   border-radius: var(--radius-lg) !important;
@@ -316,7 +308,7 @@ div[style*="border: 2px solid red"] {
   background: var(--gray-50) !important;
 }
 
-div[style*="border: 2px solid red"] h2 {
+div[style*"border: 2px solid red"] h2 {
   font-size: 1rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -324,13 +316,13 @@ div[style*="border: 2px solid red"] h2 {
   margin-bottom: 10px;
 }
 
-div[style*="border: 2px solid red"] p,
-div[style*="border: 2px solid red"] li {
+div[style*"border: 2px solid red"] p,
+div[style*"border: 2px solid red"] li {
   color: var(--gray-600);
   font-size: 0.9rem;
 }
 
-/* ── About / Home content ─────────────────────────────────── */
+/*About / Home content */
 .content-card {
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-lg);
@@ -338,7 +330,7 @@ div[style*="border: 2px solid red"] li {
   margin-top: 24px;
 }
 
-/* ── Footer-style sub-links ───────────────────────────────── */
+/*Footer-style sub-links*/
 body > p:last-child,
 form + p {
   font-size: 0.875rem;
@@ -346,7 +338,7 @@ form + p {
   margin-top: 8px;
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
+/*Responsive */
 @media (max-width: 600px) {
   nav {
     padding: 0 16px;
@@ -361,12 +353,11 @@ form + p {
   h1 { font-size: 1.4rem; }
 }
 
-/* ── Navbar logout pushed right ───────────────────────────── */
 .nav-logout {
   margin-left: auto;
 }
 
-/* ── Password requirements box ────────────────────────────── */
+/*Password requirements box */
 .password-requirements {
   background: var(--gray-50);
   border: 1px solid var(--gray-200);
@@ -399,7 +390,7 @@ form + p {
   margin: 0;
 }
 
-/* ── Error box ─────────────────────────────────────────────── */
+/*Error box */
 .error-box {
   background: #fff8f8;
   border: 1px solid #fecaca;
@@ -428,7 +419,7 @@ form + p {
   color: #991b1b;
 }
 
-/* ── Home page ─────────────────────────────────────────────── */
+/*Home page  */
 .home-header {
   margin-bottom: 32px;
 }
