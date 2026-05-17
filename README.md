@@ -19,19 +19,6 @@ A simple Django authentication system featuring user registration, login/logout,
 - HTML5
 - CSS3
 
-## Project Structure
-project/
-├── main/
-│   ├── templates/
-│   ├── static/
-│   ├── views.py
-│   ├── urls.py
-│   └── models.py
-├── config/
-│   ├── settings.py
-│   └── urls.py
-└── manage.py
-
 ## Setup
 
 python -m venv env
